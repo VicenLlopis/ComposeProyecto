@@ -1,5 +1,6 @@
 package com.example.formsample
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
@@ -12,6 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -21,6 +23,9 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.formsample.pages.MessageCard
+import com.example.formsample.ui.theme.Orange
+import com.example.formsample.ui.theme.Orange2
 import com.example.formsample.ui.theme.Purple700
 
 @Composable
@@ -29,20 +34,23 @@ fun LoginPage(navController: NavController) {
         ClickableText(
             text = AnnotatedString("Signup Here"),
             modifier = Modifier
-                .align(Alignment.Center)
-                .padding(20.dp),
+                .align(Alignment.BottomCenter)
+                .padding(20.dp)
+                .height(200.dp),
+
             onClick = { navController.navigate("signup") },
             style = TextStyle(
-                fontSize = 14.sp,
+                fontSize = 20.sp,
                 fontFamily = FontFamily.Default,
                 textDecoration = TextDecoration.Underline,
                 color = Purple700
             )
         )
    }
+
     Column(
-        modifier = Modifier.padding(20.dp),
-        verticalArrangement = Arrangement.Center,
+        modifier = Modifier.padding(40.dp),
+        verticalArrangement = Arrangement.SpaceAround,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         val username = remember {
@@ -51,13 +59,17 @@ fun LoginPage(navController: NavController) {
         val password = remember {
             mutableStateOf(TextFieldValue())
         }
-        
+        Spacer(modifier = Modifier.height(65.dp))
+
         Text(
             text = "Login",
-            style = TextStyle(fontSize = 40.sp, fontFamily = FontFamily.Cursive)
+            style = TextStyle(
+                fontSize = 40.sp,
+                fontFamily = FontFamily.Cursive),
+            modifier = Modifier.padding(30.dp)
         )
 
-        Spacer(modifier = Modifier.height(15.dp))
+
         
         TextField(
             label = { Text(text = "Username") },
@@ -78,7 +90,7 @@ fun LoginPage(navController: NavController) {
 
         Box(modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)) {
             Button(
-                onClick = {},
+                onClick = {navController.navigate("chat") },
                 shape = RoundedCornerShape(50.dp),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -90,13 +102,7 @@ fun LoginPage(navController: NavController) {
         
         Spacer(modifier = Modifier.height(15.dp))
 
-        ClickableText(
-            text = AnnotatedString("Forgot Password?"),
-            onClick = { navController.navigate("forgot-password") },
-            style = TextStyle(
-                fontSize = 15.sp,
-                fontFamily = FontFamily.Default
-            )
-        )
     }
 }
+
+

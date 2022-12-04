@@ -29,10 +29,11 @@ fun SignUp(navController: NavController) {
             navController = navController,
             title = "SignUp",
             showBackIcon = true
+
         )},
         content = {
             Column(
-                modifier = Modifier.padding(20.dp),
+                modifier = Modifier.padding(30.dp).height(1000.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -47,13 +48,12 @@ fun SignUp(navController: NavController) {
                 val passwordConfirm = remember {
                     mutableStateOf(TextFieldValue())
                 }
-
                 Text(
-                    text = "SignUp",
+                    text = "Register",
                     style = TextStyle(fontSize = 40.sp, fontFamily = FontFamily.Cursive)
                 )
 
-                Spacer(modifier = Modifier.height(15.dp))
+                Spacer(modifier = Modifier.height(50.dp))
 
                 TextField(
                     label = { Text(text = "Username") },
@@ -81,7 +81,7 @@ fun SignUp(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(15.dp))
 
-                Box(modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)) {
+                Box(modifier = Modifier.padding(30.dp, 10.dp, 40.dp, 0.dp)) {
                     Button(
                         onClick = {},
                         shape = RoundedCornerShape(50.dp),
